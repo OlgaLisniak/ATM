@@ -10,7 +10,7 @@ namespace ATM.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View("View");
+            return View();
         }
 
         public ActionResult About()
