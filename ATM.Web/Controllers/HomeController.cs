@@ -1,4 +1,6 @@
-﻿using ATM.Business.ViewModels;
+﻿using ATM.Business.Interfaces;
+using ATM.Business.Services;
+using ATM.Business.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,13 @@ namespace ATM.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICreditCardService creditCardService;
+
+        public HomeController(ICreditCardService _creditCardService)
+        {
+            creditCardService = _creditCardService;
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -21,7 +30,17 @@ namespace ATM.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View("PINCode");
+                if (creditCardService.IsActive(creditCard))
+                {
+                    return View("PINCode");
+                }
+                else
+                {
+                    var message = "Your card is blocked";
+                    var error = new ErrorVM(message);
+
+                    return View("Error");
+                }
             }
 
             return View();

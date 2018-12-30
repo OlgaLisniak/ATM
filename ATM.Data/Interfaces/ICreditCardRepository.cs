@@ -10,7 +10,7 @@ namespace ATM.Data.Interfaces
     public interface ICreditCardRepository : IDisposable
     {
         bool IsActive(int id);
-        int GetCardIdByNumber(string number);
+        int GetCreditCardIdByNumber(string number);
         CreditCard GetCreditCard(string number);
         CreditCard GetCreditCard(int id);
     }

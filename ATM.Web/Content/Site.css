@@ -28,3 +28,7 @@ textarea {
 .form-control[readonly] {
     background-color: white;
 }
+
+.error-body{
+    text-align:center;
+}

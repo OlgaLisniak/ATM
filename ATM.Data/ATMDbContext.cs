@@ -13,12 +13,6 @@ namespace ATM.Data
         public ATMDbContext() : base("ATMDb")
         {}
 
-        //to initialize only when first accessing the context
-        static ATMDbContext()
-        {
-            Database.SetInitializer(new ATMDbInitializer());
-        }
-
         public DbSet<CreditCard> CreditCards { get; set; }
         public DbSet<Operation> Operations { get; set; }
         public DbSet<OperationResult> OperationResults { get; set; }

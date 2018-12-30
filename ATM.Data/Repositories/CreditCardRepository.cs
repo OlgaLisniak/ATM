@@ -17,7 +17,7 @@ namespace ATM.Data.Repositories
             db = _context.Set<CreditCard>();
         }
 
-        public int GetCardIdByNumber(string number)
+        public int GetCreditCardIdByNumber(string number)
         {
             var card = GetCreditCard(number);
             if (card != null)
@@ -39,7 +39,12 @@ namespace ATM.Data.Repositories
 
         public bool IsActive(int id)
         {
-            return GetCreditCard(id).IsActive;
+            var card = GetCreditCard(id);
+            if(card != null)
+            {
+                return card.IsActive;
+            }
+            return false;
         }
 
         public void Dispose()
