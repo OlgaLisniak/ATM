@@ -5,5 +5,6 @@ namespace ATM.Business.Interfaces
     public interface ICreditCardService
     {
         bool IsActive(CreditCardVM creditCard);
+        int GetCreditCardId(CreditCardVM creditCard);
     }
 }

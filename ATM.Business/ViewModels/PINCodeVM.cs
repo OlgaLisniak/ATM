@@ -6,5 +6,6 @@ namespace ATM.Business.ViewModels
     {
         [Display(Name = "PIN Code")]
         public string PINCode { get; set; }
+        public int CardId { get; set; }
     }
 }

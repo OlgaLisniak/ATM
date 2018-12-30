@@ -1,10 +1,7 @@
 ﻿using ATM.Business.Interfaces;
-using ATM.Business.Services;
 using ATM.Business.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace ATM.Web.Controllers
@@ -12,10 +9,12 @@ namespace ATM.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ICreditCardService creditCardService;
+        private readonly int PINCodeAttempts;
 
         public HomeController(ICreditCardService _creditCardService)
         {
             creditCardService = _creditCardService;
+            PINCodeAttempts = Convert.ToInt32(ConfigurationManager.AppSettings["PINCodeAttempts"]);
         }
 
         [HttpGet]
@@ -30,19 +29,38 @@ namespace ATM.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (creditCardService.IsActive(creditCard))
+                var isActiveCard = creditCardService.IsActive(creditCard);
+
+                if (isActiveCard)
                 {
-                    return View("PINCode");
+                    var pinCodeVM = new PINCodeVM
+                    {
+                        CardId = creditCardService.GetCreditCardId(creditCard)
+                    };
+
+                    return View("PINCode", pinCodeVM);
                 }
                 else
                 {
-                    var message = "Your card is blocked";
+                    var message = "Your Credit Card Is Blocked";
                     var error = new ErrorVM(message);
 
-                    return View("Error");
+                    return View("Error", error);
                 }
             }
+            return View();
+        }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PINCodePost(PINCodeVM pinCode)
+        {
+
+            if (ModelState.IsValid)
+            {
+                
+            }
             return View();
         }
 

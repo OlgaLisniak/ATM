@@ -5,32 +5,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>PINCode</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("PINCodePost", "Home", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>PINCodeVM</h4>
+        <h4 class="text-center">Enter PIN Code</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+        <input type="hidden" name="CardId" value=@Model.CardId/>
         <div class="form-group">
-            @Html.LabelFor(model => model.PINCode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PINCode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PINCode, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.PINCode, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
+            <div class="col-md-8 col-sm-6">
+                <input id="credit-card-number" name="PINCode" class="enter-number form-control " type="password" maxlength="4" oninput="maskCreditCard()" readonly />
+                @*@Html.ValidationMessageFor(model => model.PINCode, "", new { @class = "text-danger" })*@
             </div>
         </div>
-
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-5 col-sm-offset-4 col-md-10">
+                @Html.Partial("Numpad")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-7">
+                <a href="Home/Index" class="btn btn-danger btn-lg pull-left">Exit</a>
+                <input type="submit" value="OK" class="btn btn-success btn-lg pull-right" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

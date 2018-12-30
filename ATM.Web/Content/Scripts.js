@@ -1,23 +1,22 @@
 ﻿function input(e) {
-    var NumInput = document.getElementById("credit-card-number");
-    if (NumInput.value.length < 16) {
-        NumInput.value +=  e.value;
+    var numInput = document.getElementsByClassName("enter-number")[0];
+    if (numInput.value.length < numInput.maxLength) {
+        numInput.value +=  e.value;
     }
 }
 
 function del() {
-    var NumInput = document.getElementById("credit-card-number");
-    NumInput.value = NumInput.value.substr(0, NumInput.value.length - 1);
+    var numInput = document.getElementsByClassName("enter-number")[0];
+    numInput.value = numInput.value.substr(0, numInput.value.length - 1);
 }
 
 function clr() {
-    var NumInput = document.getElementById("credit-card-number");
-    NumInput.value = "";
+    var numInput = document.getElementsByClassName("enter-number")[0];
+    numInput.value = "";
 }
 
 function back() {
     history.go(-1);
-    //return false;
 }
 
 function maskCreditCard() {

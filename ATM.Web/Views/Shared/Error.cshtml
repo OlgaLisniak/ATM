@@ -1,13 +1,13 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
-</body>
-</html>
+﻿
+@model ATM.Business.ViewModels.ErrorVM
+
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="error-body">
+    <h1>@Model.Message</h1>
+    <br />
+    <br />
+    <button class="btn btn-default btn-lg" onclick="back()">Back</button><br />
+</div>
