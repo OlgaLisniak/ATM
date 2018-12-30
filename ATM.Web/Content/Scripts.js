@@ -16,9 +16,10 @@ function clr() {
 }
 
 function maskCreditCard() {
-    console.log("kakoka")
-    var x = value.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
-    value = !x[2] ? x[1] : '-' + x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
+    var valueInput = document.getElementById("credit-card-number").value;
+    var x = valueInput.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
+    value = !x[2] ? x[1] : '' + x[1] + '-' + x[2] + '-' + x[3] + (x[4] ? '-' + x[4] : '');
+    valueInput = value
     console.log(value);
 }
 
