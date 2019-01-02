@@ -9,7 +9,8 @@
 @foreach (var item in Model)
 {
     <div>
-        <a href="Operation/" @item.Id class="btn btn-primary btn-lg">@Html.DisplayFor(modelItem => item.Name)</a>
+       @Html.ActionLink(item.Name, item.Name, null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+        @*<a href="Operation/" @item.Id class="btn btn-primary btn-lg">@Html.DisplayFor(modelItem => item.Name)</a>*@
     </div>
     <br />
 }

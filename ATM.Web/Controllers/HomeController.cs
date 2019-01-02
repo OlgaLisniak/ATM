@@ -88,5 +88,14 @@ namespace ATM.Web.Controllers
             return View("PINCode");
         }
 
+        public ActionResult Exit()
+        {
+            if (Request.Cookies["CardId"] != null)
+            {
+                Response.Cookies["CardId"].Expires = DateTime.Now.AddDays(-1);
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }

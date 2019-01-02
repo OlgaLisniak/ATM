@@ -19,5 +19,20 @@ namespace ATM.Web.Controllers
 
             return View(operations);
         }
+
+        public ActionResult Balance()
+        {
+            return View();
+        }
+
+        public ActionResult Withdrawal()
+        {
+            return View();
+        }
+
+        public ActionResult Exit()
+        {
+            return View();
+        }
     }
 }
