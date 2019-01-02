@@ -9,6 +9,9 @@ namespace ATM.Data.Models
 
         [Required]
         public string Number { get; set; }
+        
+        [Required]
+        [MaxLength(4)]
         public string PINCode { get; set; }
         public double Balance { get; set; }
         public bool IsActive { get; set; }

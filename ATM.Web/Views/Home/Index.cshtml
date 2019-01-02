@@ -1,4 +1,4 @@
-﻿@model ATM.Business.ViewModels.CreditCardVM
+﻿@model ATM.Business.DTO.CreditCardDTO
 
 @{
     ViewBag.Title = "Credit Card Number";
@@ -12,12 +12,11 @@
     <div class="form-horizontal">
         <h4 class="text-center">Enter Credit Card Number</h4>
         <hr />
-        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
         <div class="form-group">
             @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
             <div class="col-md-8 col-sm-6">
-                <input name="Number" class="enter-number form-control" type="text" maxlength="16" oninput="maskCreditCard()" readonly />
-                @*@Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })*@
+                @Html.TextBoxFor(model => model.Number, htmlAttributes: new { @class = "enter-number form-control", @readonly = "readonly", @maxlength = "16" })
+                @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">

@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ATM.Business.Interfaces;
 using System.Web.Mvc;
 
 namespace ATM.Web.Controllers
 {
     public class OperationController : Controller
     {
+        private readonly IOperationService operationService;
+
+        public OperationController(IOperationService _operationService)
+        {
+            operationService = _operationService;
+        }
+
         // GET: Operation
         public ActionResult Index()
         {
-            return View();
+            var operations = operationService.GetAll();
+
+            return View(operations);
         }
     }
 }

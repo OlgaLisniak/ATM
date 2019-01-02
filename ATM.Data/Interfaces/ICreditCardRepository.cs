@@ -1,9 +1,5 @@
 ﻿using ATM.Data.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ATM.Data.Interfaces
 {
@@ -13,5 +9,7 @@ namespace ATM.Data.Interfaces
         int GetCreditCardIdByNumber(string number);
         CreditCard GetCreditCard(string number);
         CreditCard GetCreditCard(int id);
+        string GetPINCode(int id);
+        void BlockCreditCard(int id);
     }
 }

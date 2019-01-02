@@ -47,6 +47,26 @@ namespace ATM.Data.Repositories
             return false;
         }
 
+        public string GetPINCode(int id)
+        {
+            var card = GetCreditCard(id);
+            if (card != null)
+            {
+                return card.PINCode;
+            }
+            return null;
+        }
+
+        public void BlockCreditCard(int id)
+        {
+            var card = GetCreditCard(id);
+            if (card != null)
+            {
+                card.IsActive = false;
+                context.SaveChanges();
+            }
+        }
+
         public void Dispose()
         {
             Dispose(true);

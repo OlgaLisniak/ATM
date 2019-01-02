@@ -1,4 +1,5 @@
-﻿using ATM.Business.Interfaces;
+﻿using ATM.Bootstrap.Automapper;
+using ATM.Business.Interfaces;
 using ATM.Business.Services;
 using ATM.Data;
 using ATM.Data.Interfaces;
@@ -17,12 +18,18 @@ namespace ATM.Bootstrap
 
         public void RegisterDomainModels(ContainerBuilder builder)
         {
+            builder.RegisterType<ATMDbContext>().InstancePerRequest();
+
             builder.RegisterType<CreditCardService>()
                  .As<ICreditCardService>().InstancePerRequest();
             builder.RegisterType<CreditCardRepository>()
                  .As<ICreditCardRepository>().InstancePerRequest();
-
-            builder.RegisterType<ATMDbContext>().InstancePerRequest();
+            builder.RegisterType<OperationService>()
+                .As<IOperationService>().InstancePerRequest();
+            builder.RegisterType<OperationRepository>()
+                 .As<IOperationRepository>().InstancePerRequest();
+            builder.RegisterType<ATMAutoMapper>()
+                 .As<IATMMapper>().InstancePerRequest();
         }
     }
 }

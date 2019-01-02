@@ -1,4 +1,4 @@
-﻿using ATM.Business.ViewModels;
+﻿using ATM.Business.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace ATM.Web.Controllers
         public ActionResult NotFound()
         {
             Response.StatusCode = 404;
-            var error = new ErrorVM("Not Found");
+            var error = new ErrorDTO("Not Found");
             return View(error);
         }
 

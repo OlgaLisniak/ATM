@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ATMDbContext.cs" />
     <Compile Include="Interfaces\ICreditCardRepository.cs" />
+    <Compile Include="Interfaces\IOperationRepository.cs" />
     <Compile Include="Migrations\201812292032176_Add Main tables.cs" />
     <Compile Include="Migrations\201812292032176_Add Main tables.Designer.cs">
       <DependentUpon>201812292032176_Add Main tables.cs</DependentUpon>
@@ -58,6 +59,14 @@
     <Compile Include="Migrations\201812302050451_Small Changes.Designer.cs">
       <DependentUpon>201812302050451_Small Changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901021528496_Change the name type of operations.cs" />
+    <Compile Include="Migrations\201901021528496_Change the name type of operations.Designer.cs">
+      <DependentUpon>201901021528496_Change the name type of operations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901021955385_Add required fields.cs" />
+    <Compile Include="Migrations\201901021955385_Add required fields.Designer.cs">
+      <DependentUpon>201901021955385_Add required fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ATMDbInitializer.cs" />
     <Compile Include="Models\CreditCard.cs" />
@@ -65,6 +74,7 @@
     <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CreditCardRepository.cs" />
+    <Compile Include="Repositories\OperationRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -76,6 +86,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812302050451_Small Changes.resx">
       <DependentUpon>201812302050451_Small Changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901021528496_Change the name type of operations.resx">
+      <DependentUpon>201901021528496_Change the name type of operations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901021955385_Add required fields.resx">
+      <DependentUpon>201901021955385_Add required fields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

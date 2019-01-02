@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ATM.Business.DTO.OperationDTO>
+
+@{
+    ViewBag.Title = "Operations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@foreach (var item in Model)
+{
+    <div>
+        <a href="Operation/" @item.Id class="btn btn-primary btn-lg">@Html.DisplayFor(modelItem => item.Name)</a>
+    </div>
+    <br />
+}

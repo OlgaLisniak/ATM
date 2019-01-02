@@ -1,10 +1,10 @@
-﻿namespace ATM.Business.ViewModels
+﻿namespace ATM.Business.DTO
 {
-    public class ErrorVM
+    public class ErrorDTO
     {
         public string Message { get; set; }
 
-        public ErrorVM(string message)
+        public ErrorDTO(string message)
         {
             Message = message;
         }
