@@ -6,8 +6,8 @@ namespace ATM.Business.DTO
     {
         [Required]
         [Display(Name = "PIN Code")]
-        [MaxLength(4)]
-        [MinLength(4)]
+        [MaxLength(4, ErrorMessage = "The Pin Code cannot exceed 4 digits. ")]
+        [MinLength(4, ErrorMessage = "The Pin Code cannot be less than 4 digits. ")]
         public string PINCode { get; set; }
     }
 }

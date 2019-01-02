@@ -1,4 +1,5 @@
 ﻿using ATM.Business.Interfaces;
+using System;
 using System.Web.Mvc;
 
 namespace ATM.Web.Controllers
@@ -11,8 +12,7 @@ namespace ATM.Web.Controllers
         {
             operationService = _operationService;
         }
-
-        // GET: Operation
+        
         public ActionResult Index()
         {
             var operations = operationService.GetAll();
@@ -32,7 +32,11 @@ namespace ATM.Web.Controllers
 
         public ActionResult Exit()
         {
-            return View();
+            if (Request.Cookies["CardId"] != null)
+            {
+                Response.Cookies["CardId"].Expires = DateTime.Now.AddDays(-1);
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -5,12 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h4 class="text-center">Choose Operation</h4>
+<hr />
 
 @foreach (var item in Model)
 {
-    <div>
-       @Html.ActionLink(item.Name, item.Name, null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
-        @*<a href="Operation/" @item.Id class="btn btn-primary btn-lg">@Html.DisplayFor(modelItem => item.Name)</a>*@
+    <div class="text-center">
+        @Html.ActionLink(item.Name, item.Name, null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
     </div>
     <br />
 }
