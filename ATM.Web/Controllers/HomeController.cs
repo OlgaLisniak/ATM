@@ -10,7 +10,6 @@ namespace ATM.Web.Controllers
     {
         private readonly ICreditCardService creditCardService;
         private readonly int MaxInvalidPinCodeAttempts;
-        public int PINCodeAttempts;
 
         public HomeController(ICreditCardService _creditCardService)
         {
@@ -36,6 +35,7 @@ namespace ATM.Web.Controllers
                 {
                     Response.Cookies["CardId"].Value = creditCardService.GetCreditCardId(creditCard).ToString();
                     Response.Cookies["CardId"].Expires = DateTime.Now.AddMinutes(5);
+                    TempData["pinCodeAttempts"] = 0;
 
                     return View("PINCode");
                 }
@@ -52,21 +52,24 @@ namespace ATM.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PINCodePost(PINCodeDTO model)
+        public ActionResult PINCodePost(PINCodeDTO pinCodeDTO)
         {
             if (ModelState.IsValid)
             {
                 var cardId = Convert.ToInt32(Request.Cookies["CardId"].Value);
+                var PINCodeAttempts = Convert.ToInt32(TempData["pinCodeAttempts"]);
 
                 if (PINCodeAttempts < MaxInvalidPinCodeAttempts)
                 {
-                    if (creditCardService.IsCorrectPINCode(model, cardId))
+                    if (creditCardService.IsCorrectPINCode(pinCodeDTO, cardId))
                     {
                         return RedirectToAction("Index", "Operation");
                     }
                     else
                     {
-                        PINCodeAttempts++;
+                        ViewBag.Message = "Try again";
+                       // PINCodeAttempts++;
+                        TempData["pinCodeAttempts"] = PINCodeAttempts++;
                         return View("PINCode");
                     }
                     
