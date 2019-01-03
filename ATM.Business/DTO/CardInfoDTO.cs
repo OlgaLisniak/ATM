@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ATM.Business.DTO
 {
-    public class BalanceDTO
+    public class CardInfoDTO
     {
         [Display(Name = "Credit Card Number")]
         public string CreditCardNumber { get; set; }

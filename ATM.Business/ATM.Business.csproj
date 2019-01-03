@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\BalanceDTO.cs" />
+    <Compile Include="DTO\CardInfoDTO.cs" />
     <Compile Include="DTO\CashWithdrawalDTO.cs" />
     <Compile Include="DTO\OperationResultDTO.cs" />
     <Compile Include="DTO\OperationResultBalance.cs" />

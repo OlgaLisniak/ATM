@@ -26,7 +26,7 @@ namespace ATM.Web.Controllers
         public ActionResult Balance(int id)
         {
             var cardId = int.Parse(Request.Cookies["CardId"].Value);
-            var balance = creditCardService.GetBalanceInfo(cardId);
+            var balance = creditCardService.GetCreditCardInfo(cardId);
 
             var resultBalance = new OperationResultBalance
             {
@@ -53,28 +53,29 @@ namespace ATM.Web.Controllers
             if (ModelState.IsValid)
             {
                 var cardId = int.Parse(Request.Cookies["CardId"].Value);
-                var balance = creditCardService.GetBalanceInfo(cardId);
+                var balance = creditCardService.GetCreditCardInfo(cardId).CreditCardBalance;
                 var withdrawnAmount = int.Parse(cashWithdrawal.WithdrawnAmount);
+                var date = DateTime.Now;
 
-                if (withdrawnAmount <= balance.CreditCardBalance)
+                if (withdrawnAmount <= balance)
                 {
-                    var resultBalance = new OperationResultCashWithdrawal
+                    var resultCashWithdrawal = new OperationResultCashWithdrawal
                     {
                         CardId = cardId,
                         OperationId = id,
-                        Date = DateTime.Now,
+                        Date = date,
                         WithdrawnAmount = withdrawnAmount
                     };
 
-                    operationService.AddRecordToOperationResult(resultBalance);
+                    operationService.AddRecordToOperationResult(resultCashWithdrawal);
 
                     creditCardService.ChangeBalance(cardId, withdrawnAmount);
 
                     var operationResult = new OperationResultDTO
                     {
-                        Date = DateTime.Now,
-                        CreditCardBalance = creditCardService.GetBalanceInfo(cardId).CreditCardBalance,
-                        CreditCardNumber = creditCardService.GetBalanceInfo(cardId).CreditCardNumber,
+                        Date = date,
+                        CreditCardBalance = creditCardService.GetCreditCardInfo(cardId).CreditCardBalance,
+                        CreditCardNumber = creditCardService.GetCreditCardInfo(cardId).CreditCardNumber,
                         WithdrawnAmount = withdrawnAmount
                     };
 

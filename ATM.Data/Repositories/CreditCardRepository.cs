@@ -105,7 +105,5 @@ namespace ATM.Data.Repositories
             }
             this.disposed = true;
         }
-
-        
     }
 }

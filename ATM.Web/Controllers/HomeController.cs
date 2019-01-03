@@ -36,7 +36,6 @@ namespace ATM.Web.Controllers
                 if (isActiveCard)
                 {
                     Response.Cookies["CardId"].Value = creditCardService.GetCreditCardId(creditCard).ToString();
-                    Response.Cookies["CardId"].Expires = DateTime.Now.AddMinutes(5);
                     TempData["pinCodeAttempts"] = 0;
 
                     return View("PINCode");

@@ -38,16 +38,16 @@ namespace ATM.Business.Services
             creditCardRepository.BlockCreditCard(id);
         }
 
-        public BalanceDTO GetBalanceInfo(int id)
+        public CardInfoDTO GetCreditCardInfo(int id)
         {
-            var balanceDTO = new BalanceDTO
+            var cardInfoDTO = new CardInfoDTO
             {
                 CreditCardBalance = creditCardRepository.GetBalance(id),
                 Date = DateTime.Now,
                 CreditCardNumber = creditCardRepository.GetCreditCard(id).Number
             };
 
-            return balanceDTO;
+            return cardInfoDTO;
         }
 
         public void ChangeBalance(int id, int withdrawnAmount)
