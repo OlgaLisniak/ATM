@@ -8,5 +8,6 @@ namespace ATM.Business.Interfaces
         int GetCreditCardId(CreditCardDTO creditCard);
         bool IsCorrectPINCode(PINCodeDTO pinCodeDTO, int creditCardId);
         void BlockCreditCard(int id);
+        BalanceDTO GetBalanceInfo(int id);
     }
 }

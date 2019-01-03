@@ -181,10 +181,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Numpad.cshtml" />
+    <Content Include="Views\Shared\Numpad.cshtml" />
     <Content Include="Views\Home\PINCode.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Operation\Index.cshtml" />
+    <Content Include="Views\Operation\Balance.cshtml" />
+    <Content Include="Views\Shared\Exit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

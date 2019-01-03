@@ -7,10 +7,12 @@ namespace ATM.Web.Controllers
     public class OperationController : Controller
     {
         private readonly IOperationService operationService;
+        private readonly ICreditCardService creditCardService;
 
-        public OperationController(IOperationService _operationService)
+        public OperationController(IOperationService _operationService, ICreditCardService _creditCardService)
         {
             operationService = _operationService;
+            creditCardService = _creditCardService;
         }
         
         public ActionResult Index()
@@ -22,7 +24,10 @@ namespace ATM.Web.Controllers
 
         public ActionResult Balance()
         {
-            return View();
+            var cardId = int.Parse(Request.Cookies["CardId"].Value);
+            var balance = creditCardService.GetBalanceInfo(cardId);
+
+            return View(balance);
         }
 
         public ActionResult Withdrawal()
@@ -36,7 +41,7 @@ namespace ATM.Web.Controllers
             {
                 Response.Cookies["CardId"].Expires = DateTime.Now.AddDays(-1);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

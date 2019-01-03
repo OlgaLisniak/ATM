@@ -67,6 +67,16 @@ namespace ATM.Data.Repositories
             }
         }
 
+        public double GetBalance(int id)
+        {
+            var card = GetCreditCard(id);
+            if (card != null)
+            {
+                return card.Balance;
+            }
+            return 0;
+        }
+
         public void Dispose()
         {
             Dispose(true);
@@ -85,6 +95,7 @@ namespace ATM.Data.Repositories
             }
             this.disposed = true;
         }
+
         
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ATM.Business.DTO;
 using ATM.Business.Interfaces;
 using ATM.Data.Interfaces;
+using System;
 
 namespace ATM.Business.Services
 {
@@ -35,6 +36,18 @@ namespace ATM.Business.Services
         public void BlockCreditCard(int id)
         {
             creditCardRepository.BlockCreditCard(id);
+        }
+
+        public BalanceDTO GetBalanceInfo(int id)
+        {
+            var balanceDTO = new BalanceDTO
+            {
+                CreditCardBalance = creditCardRepository.GetBalance(id),
+                Date = DateTime.Now,
+                CreditCardNumber = creditCardRepository.GetCreditCard(id).Number
+            };
+
+            return balanceDTO;
         }
     }
 }

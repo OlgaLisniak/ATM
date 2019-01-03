@@ -11,5 +11,6 @@ namespace ATM.Data.Interfaces
         CreditCard GetCreditCard(int id);
         string GetPINCode(int id);
         void BlockCreditCard(int id);
+        double GetBalance(int id);
     }
 }

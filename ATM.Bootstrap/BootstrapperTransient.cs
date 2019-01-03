@@ -21,15 +21,20 @@ namespace ATM.Bootstrap
             builder.RegisterType<ATMDbContext>().InstancePerRequest();
 
             builder.RegisterType<CreditCardService>()
-                 .As<ICreditCardService>().InstancePerRequest();
+                .AsImplementedInterfaces().InstancePerRequest();
+            //.As<ICreditCardService>().InstancePerRequest();
             builder.RegisterType<CreditCardRepository>()
-                 .As<ICreditCardRepository>().InstancePerRequest();
+                .AsImplementedInterfaces().InstancePerRequest();
+            //.As<ICreditCardRepository>().InstancePerRequest();
             builder.RegisterType<OperationService>()
-                .As<IOperationService>().InstancePerRequest();
+                .AsImplementedInterfaces().InstancePerRequest();
+                //.As<IOperationService>().InstancePerRequest();
             builder.RegisterType<OperationRepository>()
-                 .As<IOperationRepository>().InstancePerRequest();
+                .AsImplementedInterfaces().InstancePerRequest();
+            //.As<IOperationRepository>().InstancePerRequest();
             builder.RegisterType<ATMAutoMapper>()
-                 .As<IATMMapper>().InstancePerRequest();
+                .AsImplementedInterfaces().InstancePerRequest();
+                 //.As<IATMMapper>().InstancePerRequest();
         }
     }
 }
