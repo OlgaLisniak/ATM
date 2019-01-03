@@ -52,7 +52,6 @@
     <Compile Include="Interfaces\IOperationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CreditCardService.cs" />
-    <Compile Include="Services\ErrorService.cs" />
     <Compile Include="Services\OperationService.cs" />
     <Compile Include="DTO\CreditCardDTO.cs" />
     <Compile Include="DTO\ErrorDTO.cs" />

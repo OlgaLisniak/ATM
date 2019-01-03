@@ -1,6 +1,7 @@
 ﻿using ATM.Business.DTO;
 using ATM.Business.Interfaces;
 using System;
+using System.Net;
 using System.Web.Mvc;
 
 namespace ATM.Web.Controllers
@@ -18,32 +19,54 @@ namespace ATM.Web.Controllers
         
         public ActionResult Index()
         {
-            var operations = operationService.GetAll();
-
-            return View(operations);
+            if (Request.Cookies["CardId"] != null)
+            {
+                var operations = operationService.GetAll();
+                return View(operations);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            }
+            
         }
 
         public ActionResult Balance(int id)
         {
-            var cardId = int.Parse(Request.Cookies["CardId"].Value);
-            var balance = creditCardService.GetCreditCardInfo(cardId);
-
-            var resultBalance = new OperationResultBalance
+            if (Request.Cookies["CardId"] != null)
             {
-                CardId = cardId,
-                OperationId = id,
-                Date = DateTime.Now
-            };
+                var cardId = int.Parse(Request.Cookies["CardId"].Value);
+                var balance = creditCardService.GetCreditCardInfo(cardId);
 
-            operationService.AddRecordToOperationResult(resultBalance);
+                //create record about balance operation
+                var resultBalance = new OperationResultBalance
+                {
+                    CardId = cardId,
+                    OperationId = id,
+                    Date = DateTime.Now
+                };
 
-            return View(balance);
+                operationService.AddRecordToOperationResult(resultBalance);
+
+                return View(balance);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            }
         }
 
         [HttpGet]
         public ActionResult CashWithdrawal(int id)
         {
-            return View();
+            if (Request.Cookies["CardId"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            }
         }
 
         [HttpPost]
@@ -59,6 +82,7 @@ namespace ATM.Web.Controllers
 
                 if (withdrawnAmount <= balance)
                 {
+                    //create record about Cash Withdrawal operation
                     var resultCashWithdrawal = new OperationResultCashWithdrawal
                     {
                         CardId = cardId,
@@ -69,8 +93,10 @@ namespace ATM.Web.Controllers
 
                     operationService.AddRecordToOperationResult(resultCashWithdrawal);
 
+                    //change credit card balance
                     creditCardService.ChangeBalance(cardId, withdrawnAmount);
 
+                    //create operation report
                     var operationResult = new OperationResultDTO
                     {
                         Date = date,

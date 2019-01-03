@@ -15,7 +15,7 @@ namespace ATM.Web.Controllers
         public ActionResult Forbidden()
         {
             Response.StatusCode = 403;
-            var error = new ErrorDTO("Not Found");
+            var error = new ErrorDTO("You don't have permission to access");
             return View(error);
         }
     }
