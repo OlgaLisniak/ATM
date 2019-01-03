@@ -29,6 +29,8 @@ namespace ATM.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                creditCard.Number = creditCard.Number.Replace("-", string.Empty);
+
                 var isActiveCard = creditCardService.IsActive(creditCard);
 
                 if (isActiveCard)

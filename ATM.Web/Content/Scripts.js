@@ -3,6 +3,7 @@
     if (numInput.value.length < numInput.maxLength) {
         numInput.value +=  e.value;
     }
+    maskCreditCard();
 }
 
 function del() {
@@ -19,16 +20,10 @@ function back() {
     history.go(-1);
 }
 
+
 function maskCreditCard() {
     var valueInput = document.getElementById("credit-card-number").value;
     var x = valueInput.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
     value = !x[2] ? x[1] : '' + x[1] + '-' + x[2] + '-' + x[3] + (x[4] ? '-' + x[4] : '');
-    valueInput = value
-    console.log(value);
+    document.getElementById("credit-card-number").value = value;
 }
-
-//var el = document.getElementById('credit-card-number')
-//el.addEventListener('input', function (e) {
-//    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
-//    e.target.value = !x[2] ? x[1] : '-' + x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
-//});

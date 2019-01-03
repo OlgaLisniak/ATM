@@ -15,7 +15,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
             <div class="col-md-8 col-sm-6">
-                @Html.TextBoxFor(model => model.Number, htmlAttributes: new { @class = "enter-number form-control", @readonly = "readonly", @maxlength = "16" })
+                @Html.TextBoxFor(model => model.Number, htmlAttributes: new { @class = "enter-number form-control", @readonly = "readonly", @maxlength = "20", @id= "credit-card-number" })
                 @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -31,7 +31,11 @@
         </div>
     </div>
 }
-
+<script>
+    $("#kakoka").blur(function () {
+        $("#kakoka").mask("9999-9999-9999-9999");
+    });
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
