@@ -56,7 +56,7 @@ namespace ATM.Web.Controllers
                 var balance = creditCardService.GetBalanceInfo(cardId);
                 var withdrawnAmount = int.Parse(cashWithdrawal.WithdrawnAmount);
 
-                if (withdrawnAmount < balance.CreditCardBalance)
+                if (withdrawnAmount <= balance.CreditCardBalance)
                 {
                     var resultBalance = new OperationResultCashWithdrawal
                     {

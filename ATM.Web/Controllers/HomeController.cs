@@ -43,7 +43,7 @@ namespace ATM.Web.Controllers
                 }
                 else
                 {
-                    var message = "Your Credit Card Is Blocked";
+                    var message = "Your Credit Card Is Blocked Or Not Found";
                     var error = new ErrorDTO(message);
 
                     return View("Error", error);
@@ -70,8 +70,8 @@ namespace ATM.Web.Controllers
                     else
                     {
                         ViewBag.Message = "Try again";
-                       // PINCodeAttempts++;
-                        TempData["pinCodeAttempts"] = PINCodeAttempts++;
+                        PINCodeAttempts++;
+                        TempData["pinCodeAttempts"] = PINCodeAttempts;
                         return View("PINCode");
                     }
                     

@@ -1,4 +1,4 @@
-﻿@model ATM.Business.ViewModels.ErrorVM
+﻿@model ATM.Business.DTO.ErrorDTO
 
 @{
     ViewBag.Title = "404";
@@ -8,5 +8,5 @@
     <h1>@Model.Message</h1>
     <br />
     <br />
-    <button class="btn btn-default btn-lg" onclick="back()">Back</button><br />
+    @Html.ActionLink("Home", "Index", "Home",null, htmlAttributes: new { @class = "btn btn-default btn-lg" })
 </div>

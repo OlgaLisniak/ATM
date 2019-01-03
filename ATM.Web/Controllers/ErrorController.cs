@@ -1,8 +1,4 @@
 ﻿using ATM.Business.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ATM.Web.Controllers
@@ -19,7 +15,8 @@ namespace ATM.Web.Controllers
         public ActionResult Forbidden()
         {
             Response.StatusCode = 403;
-            return View();
+            var error = new ErrorDTO("Not Found");
+            return View(error);
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿@model ATM.Business.DTO.ErrorDTO
 
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "403";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="error-body">
     <h1>@Model.Message</h1>
     <br />
     <br />
-    @Html.Partial("Back")
+    @Html.ActionLink("Home", "Index", "Home", null, htmlAttributes: new { @class = "btn btn-default btn-lg" })
 </div>

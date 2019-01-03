@@ -190,6 +190,7 @@
     <Content Include="Views\Operation\CashWithdrawal.cshtml" />
     <Content Include="Views\Operation\OperationResult.cshtml" />
     <Content Include="Views\Shared\Back.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
