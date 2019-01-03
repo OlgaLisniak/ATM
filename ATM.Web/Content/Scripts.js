@@ -16,11 +16,6 @@ function clr() {
     numInput.value = "";
 }
 
-function back() {
-    history.go(-1);
-}
-
-
 function maskCreditCard() {
     var valueInput = document.getElementById("credit-card-number").value;
     var x = valueInput.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);

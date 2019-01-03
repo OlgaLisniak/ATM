@@ -7,6 +7,7 @@ namespace ATM.Data.Models
         [Key]
         public int OperationId { get; set; }
 
+        [Required]
         public string Name { get; set; }
     }
 }

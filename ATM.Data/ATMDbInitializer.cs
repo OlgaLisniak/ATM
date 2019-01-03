@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace ATM.Data
 {
-    public class ATMDbInitializer : DropCreateDatabaseAlways<ATMDbContext>
+    public class ATMDbInitializer : CreateDatabaseIfNotExists<ATMDbContext>
     {
         protected override void Seed(ATMDbContext context)
         {
