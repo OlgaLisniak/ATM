@@ -48,8 +48,46 @@ namespace ATM.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CashWithdrawal(CashWithdrawalDTO cashWithdrawal)
+        public ActionResult CashWithdrawal(int id, CashWithdrawalDTO cashWithdrawal)
         {
+            if (ModelState.IsValid)
+            {
+                var cardId = int.Parse(Request.Cookies["CardId"].Value);
+                var balance = creditCardService.GetBalanceInfo(cardId);
+                var withdrawnAmount = int.Parse(cashWithdrawal.WithdrawnAmount);
+
+                if (withdrawnAmount < balance.CreditCardBalance)
+                {
+                    var resultBalance = new OperationResultCashWithdrawal
+                    {
+                        CardId = cardId,
+                        OperationId = id,
+                        Date = DateTime.Now,
+                        WithdrawnAmount = withdrawnAmount
+                    };
+
+                    operationService.AddRecordToOperationResult(resultBalance);
+
+                    creditCardService.ChangeBalance(cardId, withdrawnAmount);
+
+                    var operationResult = new OperationResultDTO
+                    {
+                        Date = DateTime.Now,
+                        CreditCardBalance = creditCardService.GetBalanceInfo(cardId).CreditCardBalance,
+                        CreditCardNumber = creditCardService.GetBalanceInfo(cardId).CreditCardNumber,
+                        WithdrawnAmount = withdrawnAmount
+                    };
+
+                    return View("OperationResult", operationResult);
+                }
+                else
+                {
+                    var message = "Not Enough Money On Balance";
+                    var error = new ErrorDTO(message);
+
+                    return View("Error", error);
+                }
+            }
             return View();
         }
     }

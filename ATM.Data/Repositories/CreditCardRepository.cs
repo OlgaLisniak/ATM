@@ -77,6 +77,16 @@ namespace ATM.Data.Repositories
             return 0;
         }
 
+        public void ChangeBalance(int id, int withdrawnAmount)
+        {
+            var card = GetCreditCard(id);
+            if (card != null)
+            {
+                card.Balance-= withdrawnAmount;
+                context.SaveChanges();
+            }
+        }
+
         public void Dispose()
         {
             Dispose(true);

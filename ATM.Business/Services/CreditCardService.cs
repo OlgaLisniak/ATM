@@ -49,5 +49,10 @@ namespace ATM.Business.Services
 
             return balanceDTO;
         }
+
+        public void ChangeBalance(int id, int withdrawnAmount)
+        {
+            creditCardRepository.ChangeBalance(id, withdrawnAmount);
+        }
     }
 }

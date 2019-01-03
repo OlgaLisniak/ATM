@@ -1,7 +1,7 @@
 ﻿@model ATM.Business.DTO.CashWithdrawalDTO
 
 @{
-    ViewBag.Title = "CashWithdrawal";
+    ViewBag.Title = "Cash Withdrawal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,11 +12,10 @@
     <div class="form-horizontal">
         <h4 class="text-center">Cash Withdrawal</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.WithdrawnAmount, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
             <div class="col-md-8 col-sm-6">
-                @Html.TextBoxFor(model => model.WithdrawnAmount, htmlAttributes: new { @class = "enter-number form-control", @readonly = "readonly", @maxlength = "5" })
+                @Html.TextBoxFor(model => model.WithdrawnAmount, htmlAttributes: new { @class = "enter-number form-control", @readonly = "readonly", @maxlength = "5"})
                 @Html.ValidationMessageFor(model => model.WithdrawnAmount, "", new { @class = "text-danger" })
             </div>
         </div>

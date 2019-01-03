@@ -1,18 +1,19 @@
-﻿@model ATM.Business.DTO.BalanceDTO
+﻿@model ATM.Business.DTO.OperationResultDTO
 
 @{
-    ViewBag.Title = "Balance";
+    ViewBag.Title = "Operation Result";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="panel panel-info">
+<div class="panel panel-success">
     <div class="panel-heading">
-        <h3 class="panel-title text-center"><strong>Balance</strong></h3>
+        <h3 class="panel-title text-center"><strong>Operation Result</strong></h3>
     </div>
     <div class="panel-body">
-        @Html.LabelFor(model => model.CreditCardNumber, htmlAttributes: new {@class = "font-weight-bold" }): @Html.DisplayFor(model => model.CreditCardNumber)
+        @Html.LabelFor(model => model.CreditCardNumber, htmlAttributes: new { @class = "font-weight-bold" }): @Html.DisplayFor(model => model.CreditCardNumber)
         <hr />
         @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "font-weight-bold" }): @Html.DisplayFor(model => model.Date)
+        <hr />
+        @Html.LabelFor(model => model.WithdrawnAmount, htmlAttributes: new { @class = "font-weight-bold" }): @Html.DisplayFor(model => model.WithdrawnAmount)
         <hr />
         @Html.LabelFor(model => model.CreditCardBalance, htmlAttributes: new { @class = "font-weight-bold" }): @Html.DisplayFor(model => model.CreditCardBalance)
     </div>

@@ -188,6 +188,8 @@
     <Content Include="Views\Operation\Balance.cshtml" />
     <Content Include="Views\Shared\Exit.cshtml" />
     <Content Include="Views\Operation\CashWithdrawal.cshtml" />
+    <Content Include="Views\Operation\OperationResult.cshtml" />
+    <Content Include="Views\Shared\Back.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
