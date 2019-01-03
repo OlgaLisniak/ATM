@@ -22,7 +22,6 @@ namespace ATM.Data
             {
                 new Operation{OperationId = 1, Name = "Balance"},
                 new Operation{OperationId = 2, Name = "Cash Withdrawal"},
-                new Operation{OperationId = 3, Name = "Exit"},
             };
             context.Operations.AddRange(operations);
             context.SaveChanges();

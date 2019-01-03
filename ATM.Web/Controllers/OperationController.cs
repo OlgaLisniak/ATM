@@ -48,7 +48,7 @@ namespace ATM.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CashWithdrawal()
+        public ActionResult CashWithdrawal(CashWithdrawalDTO cashWithdrawal)
         {
             return View();
         }
