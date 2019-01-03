@@ -2,7 +2,7 @@
 {
     public class OperationDTO
     {
-        public int Id { get; set; }
+        public int OperationId { get; set; }
         public string Name { get; set; }
     }
 }

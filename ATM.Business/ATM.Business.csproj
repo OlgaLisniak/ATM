@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\BalanceDTO.cs" />
+    <Compile Include="DTO\OperationResultBalance.cs" />
+    <Compile Include="DTO\OperationResultCashWithdrawal.cs" />
     <Compile Include="Interfaces\IATMMapper.cs" />
     <Compile Include="Interfaces\ICreditCardService.cs" />
     <Compile Include="Interfaces\IOperationService.cs" />

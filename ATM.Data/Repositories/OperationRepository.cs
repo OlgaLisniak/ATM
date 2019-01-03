@@ -41,5 +41,31 @@ namespace ATM.Data.Repositories
             this.disposed = true;
         }
 
+        public void AddRecordToOperationResult(int cardId, int operationId, DateTime date)
+        {
+            var operationResult = new OperationResult
+            {
+                CardId = cardId,
+                OperationId = operationId,
+                Date = date
+            };
+
+            context.OperationResults.Add(operationResult);
+            context.SaveChanges();
+        }
+
+        public void AddRecordToOperationResult(int cardId, int operationId, int withdrawnAmount, DateTime date)
+        {
+            var operationResult = new OperationResult
+            {
+                CardId = cardId,
+                OperationId = operationId,
+                Date = date,
+                WithdrawnAmount = withdrawnAmount
+            };
+
+            context.OperationResults.Add(operationResult);
+            context.SaveChanges();
+        }
     }
 }

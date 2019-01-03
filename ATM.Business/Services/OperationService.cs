@@ -21,5 +21,15 @@ namespace ATM.Business.Services
         {
             return mapper.Map<IEnumerable<Operation>, IEnumerable<OperationDTO>>(operationRepository.GetAll());
         }
+
+        public void AddRecordToOperationResult(OperationResultBalance resultBalance)
+        {
+            operationRepository.AddRecordToOperationResult(resultBalance.CardId, resultBalance.OperationId, resultBalance.Date);
+        }
+
+        public void AddRecordToOperationResult(OperationResultCashWithdrawal resultCashWithdrawal)
+        {
+            operationRepository.AddRecordToOperationResult(resultCashWithdrawal.CardId, resultCashWithdrawal.OperationId, resultCashWithdrawal.WithdrawnAmount, resultCashWithdrawal.Date);
+        }
     }
 }

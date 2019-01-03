@@ -67,6 +67,14 @@
     <Compile Include="Migrations\201901021955385_Add required fields.Designer.cs">
       <DependentUpon>201901021955385_Add required fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901031129541_Add WithdrawnAmount to operationResult table.cs" />
+    <Compile Include="Migrations\201901031129541_Add WithdrawnAmount to operationResult table.Designer.cs">
+      <DependentUpon>201901031129541_Add WithdrawnAmount to operationResult table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031130299_Change type WithdrawnAmount to int.cs" />
+    <Compile Include="Migrations\201901031130299_Change type WithdrawnAmount to int.Designer.cs">
+      <DependentUpon>201901031130299_Change type WithdrawnAmount to int.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ATMDbInitializer.cs" />
     <Compile Include="Models\CreditCard.cs" />
@@ -92,6 +100,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901021955385_Add required fields.resx">
       <DependentUpon>201901021955385_Add required fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031129541_Add WithdrawnAmount to operationResult table.resx">
+      <DependentUpon>201901031129541_Add WithdrawnAmount to operationResult table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031130299_Change type WithdrawnAmount to int.resx">
+      <DependentUpon>201901031130299_Change type WithdrawnAmount to int.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

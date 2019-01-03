@@ -21,7 +21,7 @@ namespace ATM.Data
             var operations = new List<Operation>()
             {
                 new Operation{OperationId = 1, Name = "Balance"},
-                new Operation{OperationId = 2, Name = "Withdrawal"},
+                new Operation{OperationId = 2, Name = "Cash Withdrawal"},
                 new Operation{OperationId = 3, Name = "Exit"},
             };
             context.Operations.AddRange(operations);

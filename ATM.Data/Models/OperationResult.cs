@@ -11,5 +11,6 @@ namespace ATM.Data.Models
         public int CardId { get; set; }
         public DateTime Date { get; set; }
         public int OperationId { get; set; }
+        public int? WithdrawnAmount { get; set; }
     }
 }

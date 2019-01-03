@@ -1,4 +1,5 @@
-﻿using ATM.Business.Interfaces;
+﻿using ATM.Business.DTO;
+using ATM.Business.Interfaces;
 using System;
 using System.Web.Mvc;
 
@@ -22,26 +23,34 @@ namespace ATM.Web.Controllers
             return View(operations);
         }
 
-        public ActionResult Balance()
+        public ActionResult Balance(int id)
         {
             var cardId = int.Parse(Request.Cookies["CardId"].Value);
             var balance = creditCardService.GetBalanceInfo(cardId);
 
+            var resultBalance = new OperationResultBalance
+            {
+                CardId = cardId,
+                OperationId = id,
+                Date = DateTime.Now
+            };
+
+            operationService.AddRecordToOperationResult(resultBalance);
+
             return View(balance);
         }
 
-        public ActionResult Withdrawal()
+        [HttpGet]
+        public ActionResult CashWithdrawal(int id)
         {
             return View();
         }
 
-        public ActionResult Exit()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CashWithdrawal()
         {
-            if (Request.Cookies["CardId"] != null)
-            {
-                Response.Cookies["CardId"].Expires = DateTime.Now.AddDays(-1);
-            }
-            return RedirectToAction("Index", "Home");
+            return View();
         }
     }
 }
