@@ -1,8 +1,6 @@
 ﻿using ATM.Bootstrap.Automapper;
-using ATM.Business.Interfaces;
 using ATM.Business.Services;
 using ATM.Data;
-using ATM.Data.Interfaces;
 using ATM.Data.Repositories;
 using Autofac;
 using System.Data.Entity;
@@ -22,19 +20,18 @@ namespace ATM.Bootstrap
 
             builder.RegisterType<CreditCardService>()
                 .AsImplementedInterfaces().InstancePerRequest();
-            //.As<ICreditCardService>().InstancePerRequest();
+
             builder.RegisterType<CreditCardRepository>()
                 .AsImplementedInterfaces().InstancePerRequest();
-            //.As<ICreditCardRepository>().InstancePerRequest();
+
             builder.RegisterType<OperationService>()
                 .AsImplementedInterfaces().InstancePerRequest();
-                //.As<IOperationService>().InstancePerRequest();
+
             builder.RegisterType<OperationRepository>()
                 .AsImplementedInterfaces().InstancePerRequest();
-            //.As<IOperationRepository>().InstancePerRequest();
+
             builder.RegisterType<ATMAutoMapper>()
                 .AsImplementedInterfaces().InstancePerRequest();
-                 //.As<IATMMapper>().InstancePerRequest();
         }
     }
 }

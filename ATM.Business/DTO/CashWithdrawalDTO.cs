@@ -6,6 +6,7 @@ namespace ATM.Business.DTO
     {
         [Required]
         [MaxLength(5)]
+        [Display(Name = "Withdrawn Amount")]
         public string WithdrawnAmount { get; set; }
     }
 }
